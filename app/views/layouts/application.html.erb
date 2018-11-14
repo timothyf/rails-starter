@@ -12,6 +12,12 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <br/><br/>
+    Current User: <%= current_user.email unless !current_user %><br/>
+    <%= link_to 'Login', new_user_session_path, :class => "nav-link" %><br/>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "nav-link" %><br/>
+    <%= link_to 'Admin', "/admin", :class => "nav-link" %><br/>
+
     <%= yield %>
   </body>
 </html>
