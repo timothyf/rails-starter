@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsStarter</title>
+    <title>Rails Starter App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,14 +10,11 @@
   </head>
 
   <body>
+    <%= render :partial=>'/layouts/main_nav' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <br/><br/>
-    Current User: <%= current_user.email unless !current_user %><br/>
-    <%= link_to 'Login', new_user_session_path, :class => "nav-link" %><br/>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "nav-link" %><br/>
-    <%= link_to 'Admin', "/admin", :class => "nav-link" %><br/>
-
     <%= yield %>
+    <%= render :partial=>'/layouts/main_footer' %>
   </body>
 </html>

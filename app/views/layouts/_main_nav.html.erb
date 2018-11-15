@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <!-- <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <% if !current_user %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_registration_path %>">Signup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path %>">Login</a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to current_user.email, user_path(current_user), :class => "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "nav-link" %>
+        </li>
+        <% if current_user.admin %>
+          <%= link_to 'Admin', '/admin', :class => "nav-link" %>
+        <% end %>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>
